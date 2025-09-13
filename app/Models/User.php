@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
+    
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
@@ -20,7 +21,9 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        
         'password',
+        'role'
     ];
 
     /**
@@ -49,4 +52,20 @@ class User extends Authenticatable
     public function tasks(){
         return $this->hasmany(Task::class);
     }
+
+    protected static function booted(){
+        static::creating(function ($user){
+            if(User::query()->count()===0){
+                $user->role = 'admin';
+                
+            }
+            static::deleting(function($id){
+                $user = User::find($id);
+                $user->tasks()->delete();
+                $user->delete();
+            });
+
+        });
+    }
+    
 }

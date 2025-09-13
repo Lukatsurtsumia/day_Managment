@@ -13,10 +13,22 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
     <div class="container">
       <a class="navbar-brand fw-bold" href="#">TaskManager</a>
+      @if (Auth::user())
+      <span class="navbar-text text-white me-3">
+        Welcome, {{ Auth::user()->name }}
+         </span>
+        <form action="{{route('logout')}}" method="post">
+    @csrf
+ <button class="btn btn-danger"> logout</button>
+</form>
+    
+      @else
       <div class="ms-auto">
         <a href="/login" class="btn btn-outline-light me-2">Login</a>
         <a href="/registration" class="btn btn-primary">Register</a>
       </div>
+      @endif
+      
     </div>
   </nav>
 
@@ -27,28 +39,27 @@
       <p class="lead text-muted">Organize your tasks easily and stay productive.</p>
           
  
-    @if (Auth::user())
+   
   @auth
-<h1>hello {{Auth::user()->name}}</h1>
+  @if (Auth::user()->role ==='admin')
+      @include('user_table')
+  @endif
+
 <div> 
     <a href="{{ route('tasks.store') }}" class="btn btn-primary">Add Task</a>
-<form action="{{route('logout')}}" method="post">
-    @csrf
-    <div style="margin-top: 10%">
-   <button type="submit" class="btn btn-danger" >log out</button>
-</div>
-</form>
-                 @endauth
-  
-                  @else
+    @include('tasks_table')
+
+@else                 
   <div>
     <a href="/login"><button class="btn btn-primary" >get started</button></a>
   </div>
   
     </div>
+                 @endauth
+  
+ 
   </section>
-                  @endif
-
+                  
  
 
 

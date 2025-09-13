@@ -44,7 +44,11 @@ public function login(Request $request){
     }else{
         return redirect()->back()->withErrors(['account not found']);
     }
+
 }
+  
+ 
+
  public function logout(Request $request){
     Auth::logout();
     $request->session()->invalidate();
@@ -52,5 +56,17 @@ public function login(Request $request){
     return redirect()->route('home');
 
  }
+
+ 
+    public function deleteUser($id){
+        $customers = User::find($id);
+        if($customers){
+            $customers->delete();
+            return redirect()->route('home');
+
+        }else{
+            return redirect()->back()->withErrors(['User not found']);
+        }
+    }
      
 }

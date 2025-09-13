@@ -4,10 +4,12 @@ use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 use  App\Http\Controllers\UserController;
 use App\Models\Task;
-
+use App\Models\User;
  
 Route::get('/', function () {
-    return view('welcome');
+    $tasks = Task::all();
+    $customers = User::all();
+    return view('welcome' , compact('tasks', 'customers'));
 })->name('home');
 
 Route::get('/registration', function(){
@@ -28,5 +30,7 @@ Route::middleware('auth')->group(function(){
  
 Route::patch('tasks/{task}/done', [TaskController::class, 'markAsDone'])->name('tasks.done');
 Route::delete('tasks/{task}', [TaskController::class, 'deleteTask'])->name('deleteTask');
+
+Route::delete('user/{user}', [UserController::class, 'deleteUser'])->name('deleteUser');
 });
 
