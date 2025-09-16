@@ -10,7 +10,7 @@ class TaskController extends Controller
 {
    public function index(){
     $tasks = Task::where('user_id', auth()->user()->id)->get();
-    return view('tasks', compact('tasks'));
+    return view('tasks/tasks', compact('tasks'));
    }
    public function create(Request $request){
         $request->validate([
