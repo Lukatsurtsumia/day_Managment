@@ -10,8 +10,25 @@
  
    
   @auth
+   {{-- Upload Image --}}
+ <div>
+    @if (auth()->user()->image)
+    <img src="{{asset('storage/' . auth()->user()->image)}}" alt="" style="width: 100px; height:100px; border-radius:50%;">
+    @else
+    <img src="{{asset('storage/images/default.jpg')}}" alt="" style="width: 100px; height:100px; border-radius:50%;">
+    
+    @endif
+   
+<form action="{{route('uploadImg', auth()->user()->id)}}" method="POST" enctype="multipart/form-data">
+    @csrf
+    @method('PUT')
+<input type="file" name="image"  >
+<button type="submit">Upload</button>
+</form>
+    
+ </div>
   @if (Auth::user()->role ==='admin')
-      
+
 
       @include('auth/user_table')
   @endif

@@ -8,23 +8,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <div class="container mt-5">
-   {{-- Upload Image --}}
- 
-    @if (auth()->user()->image)
-    <img src="{{asset('storage/'.auth()->user()->image)}}" alt="" style="width: 100px; height:100px; border-radius:50%;">
-    @else
-    <img src="{{asset('public/images/default.jpg')}}" alt="" style="width: 100px; height:100px; border-radius:50%;">
-    
-    @endif
-   <div>
-<form action="{{route('uploadImg', auth()->user()->id)}}" method="POST" enctype="multipart/form-data">
-    @csrf
-    @method('PUT')
-<input type="file" name="image"  >
-<button type="submit">Upload</button>
-</form>
-    
- </div>
+  
     <!-- Task Table -->
     <h3 class="mt-5">My Tasks</h3>
     <table class="table table-bordered">

@@ -58,19 +58,20 @@ public function login(Request $request){
  }
 
  //  Upload image
- public function UploadImg(Request $request, $id){
+ public function UploadImg(Request $request, User $user){
     $request->validate([
         'image'=>'required|image|max:2048'
     ]);
-    $user= User::findOrFail($id);
+   
 
     if($request->hasFile('image')){
         $path = $request->file('image')->store('images', 'public');
         $user->image = $path;
         $user->save();
-        return redirect()->back()->with('success', 'Image uploaded successfully');
 
     }
+            return redirect()->back()->with('success', 'Image uploaded successfully');
+
 
  }
  
