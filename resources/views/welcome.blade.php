@@ -11,6 +11,8 @@
    
   @auth
   @if (Auth::user()->role ==='admin')
+      
+
       @include('auth/user_table')
   @endif
 

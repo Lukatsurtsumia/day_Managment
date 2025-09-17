@@ -27,10 +27,11 @@ Route::middleware('auth')->group(function(){
    
  Route::get('/tasks', [TaskController::class, 'index'])->name('tasks') ;
  Route::post('tasks', [TaskController::class, 'create'])->name('tasks.store');
- 
-Route::patch('tasks/{task}/done', [TaskController::class, 'markAsDone'])->name('tasks.done');
+
+ Route::patch('tasks/{task}/done', [TaskController::class, 'markAsDone'])->name('tasks.done');
 Route::delete('tasks/{task}', [TaskController::class, 'deleteTask'])->name('deleteTask');
 
+Route::put('/user/{user}', [UserController::class,'uploadImg'])->name('uploadImg');
 Route::delete('user/{user}', [UserController::class, 'deleteUser'])->name('deleteUser');
 });
 

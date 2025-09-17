@@ -30,6 +30,7 @@ class UserController extends Controller
         return view('auth.login');
     }   
  
+ 
 
 public function login(Request $request){
     $validate = $request->validate([
@@ -46,8 +47,7 @@ public function login(Request $request){
     }
 
 }
-  
- 
+
 
  public function logout(Request $request){
     Auth::logout();
@@ -57,6 +57,22 @@ public function login(Request $request){
 
  }
 
+ //  Upload image
+ public function UploadImg(Request $request, $id){
+    $request->validate([
+        'image'=>'required|image|max:2048'
+    ]);
+    $user= User::findOrFail($id);
+
+    if($request->hasFile('image')){
+        $path = $request->file('image')->store('images', 'public');
+        $user->image = $path;
+        $user->save();
+        return redirect()->back()->with('success', 'Image uploaded successfully');
+
+    }
+
+ }
  
     public function deleteUser($id){
         $customers = User::find($id);
