@@ -1,32 +1,89 @@
-# Day Management
-A Laravel application designed to help users manage daily tasks, schedules, and appointments with ease. 
-Project offers a clean and simple interface for tracking and organizing your day-to-day activities.
+# 📅 Day Management
 
-# What does it offers me
--User registration and authentication.
--Create, view, update, and delete tasks or events.  
--Mark tasks as completed.
+A Laravel application that helps users manage daily tasks, schedules, and appointments with a clean and simple interface.
+This project allows users to organize their daily activities and track their progress.
+---
 
-# Technologie Used
--Backend (PHP 8+, Laravel). 
--Frontend (Blade, Css, Javascript) 
--Database(MySQL)
--Tools(Composer, Npm, Artisan CLI)
-/////////////////////////////////////////////////////////////////
+## ✨ Features
+- User registration and authentication
+- Create, view, update, and delete tasks
+- Mark tasks as completed
+- Simple and clean user interface
 
-# Lets Start
-Make sure you have installed:
+---
+## 🛠 Technologies Used
 
-PHP >= 8.0
-Composer
-MySQL or SQLite
-Node.js & NPM
-Clone the repository
+### Backend
+- PHP 8+
+- Laravel
+
+### Frontend
+- Blade
+- CSS
+- JavaScript
+
+### Database
+- MySQL / SQLite
+
+### Tools
+- Composer
+- NPM
+- Laravel Artisan CLI
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
+
+```bash
 git clone https://github.com/Lukatsurtsumia/carsCrud.git
 cd carsCrud
-2.composer install npm install && npm run dev
+```
 
-3.cp .env.example .env php artisan key:generate
+### 2. Install dependencies
+```bash
+composer install
+npm install
+npm run dev
+```
 
-php artisan migrate --seed
-Run the Project 5. php artisan serve......http://127.0.0.1:8000
+### 3. Configure environment
+
+```bash
+cp .env.example .env
+php artisan key:generate
+```
+### 4. Setup database
+
+Update your `.env` file with your database credentials.
+Then run:
+```bash
+php artisan migrate
+```
+
+### 5. Start the server
+
+```bash
+php artisan serve
+```
+Open in your browser:
+```
+http://127.0.0.1:8000
+```
+---
+
+## 📌 Future Improvements
+
+- Task reminders
+- Calendar integration
+- Notifications
+- Better UI/UX
+
+---
+## 👨‍💻 Author 
+
+Developed by **Luka Tsurtsumia**
+## 👨‍💻 Author
+
+Developed by **Luka Tsurtsumia**
